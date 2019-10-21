@@ -17,9 +17,9 @@
 <body>
   <section class="section">
     <div class="container">
-      <h1 class="title">Chuck Norris Jokes</h1>
+      <h1 class="title">Simpsons facts</h1>
       <p>Reload for another joke!</p>
-      <div class="content" id="chuck-norris">
+      <div class="content" id="simpsons">
       </div>
       <input class="wow" type="button" onclick='window.location.reload(false)' value="Rafraichir"/>
     </div>
@@ -30,26 +30,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
   <script>
 // This function loads pokemon data from the Pokemon API
-function chuckFacts() {
+function simpsonsFacts() {
     // Feel free to download this HTML and edit it, to use another Pokemon ID
-    const url = `https://api.chucknorris.io/jokes/random/`;
+    const url = `https://quests.wilders.dev/simpsons-quotes/quotes`;
     axios.get(url)
       .then(function(response) {
         return response.data; // SUBTLE difference with Fetch: response.data instead of response.json()
       })
-      .then(function(chucknorris) {
-        console.log('data decoded from JSON:', chucknorris);
+      .then(function(simpsons) {
+        console.log('data decoded from JSON:', simpsons);
   
         // Build a block of HTML
-        const chucknorrisHTML = `
-          <p><strong>${chucknorris.value}</strong></p>
-          <img src="${chucknorris.icon_url}" />
+        const simpsonsHTML = `
+          <p><strong>${simpsons.character}</strong></p>
+          <p>${simpsons.quote}</p>
+          <img src="${simpsons.image}" />
         `;
-        document.querySelector('#chuck-norris').innerHTML = chucknorrisHTML;
+        document.querySelector('#simpsons').innerHTML = simpsonsHTML;
       });
   }
   
-  chuckFacts();
+  simpsonsFacts();
   </script>
 </body>
 
